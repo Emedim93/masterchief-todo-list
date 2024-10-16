@@ -1,13 +1,23 @@
-export default function TaskItem({ task, onDelete, onToggleComplete }) {
+import React from 'react';
+import TaskItem from './TaskItem';
+import styles from '../styles/Home.module.css';
+
+
+export default function TaskList({ tasks, onDelete, onToggleComplete }) {
     return (
-        <li style={{ textDecoration: task.completed ? 'line-through' : none }}>
-            <input
-                type="checkbox"
-                checked={task.completed}
-                onChange={() => onToggleComplete(task.id)}
-                />
-                {task.text}
-                <button onClick={() => onDelete(task.id)}>Supprimer</button>
-        </li>
+    <ul>
+        {tasks && tasks.length > 0 ? ( // Vérifiez si tasks existe et n'est pas vide
+        tasks.map((task) => (
+            <TaskItem 
+            key={task.id} 
+              task={task} // Passez l'objet task au composant TaskItem
+            onDelete={onDelete} 
+            onToggleComplete={onToggleComplete} 
+            />
+        ))
+        ) : (
+        <li>Aucune tâche à afficher</li> // Message si aucune tâche n'est disponible
+        )}
+    </ul>
     );
 }
