@@ -1,21 +1,66 @@
+
+
 .container{
-    background-color: #f0f0f0; /* Couleur de fond */
+    background-color: #b87272; /* Couleur de fond */
     background-image: url('../../halo/image4/major.png'); /* Chemin de l'image */
     background-size: cover; /* Ajuster l'image au conteneur */
     background-position: center; /* Centrer l'image */
-    min-height: 100vh; /* Hauteur minimale de la vue */
-    padding: 20px; /* Padding intérieur */
+    /*min-height: 100vh;  Hauteur minimale de la vue */
+    padding: 0; /* Padding intérieur */
     margin: 0; /* Pas de marge externe */
     display: flex; /* Flex pour aligner les éléments */
     flex-direction: column; /* Alignement vertical */
     align-items: center; /* Centrer les éléments horizontalement */
-    
+    width: 100%;
 }
 
 .title {
+    font-family: 'Arial, sans-serif';
     color: #c42020; /* Couleur du texte */
+    text-align: center;
     font-size: 2.5rem; /* Taille de la police */
     margin-bottom: 20px; /* Marge en bas */
-    text-align: center; /* Centrer le texte */
+    
 }
 
+.list {
+    padding: 0;
+    list-style: none;
+    color: white;
+}
+
+.taskItem {
+    display: flex;
+    align-items: center;    
+    margin: 10px 0; /* espaces entre les tâches */
+}
+
+.taskText {
+    flex: 1;
+    margin-left: 10px;
+    font-size: 18px;
+    color: rgb(146, 39, 39);
+}
+
+.completed {
+    text-decoration: line-through; /* barré le texte lorsque la tâche est réalisée /*/
+    color: #bbdfbb;
+}
+
+.deleteButton {
+    background-color: #ff4d4d;
+    border-radius: 5px;
+    color: rgb(61, 21, 21);
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.deleteButton:hover {
+    background-color: #ff1a1a; /* change la couleur au survol */
+}
+
+.puces {
+    color: white;
+}

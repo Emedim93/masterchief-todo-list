@@ -2,21 +2,32 @@ import React, { useEffect, useState } from 'react'; // Importer useState et useE
 import TaskForm from '@/components/TaskForm';
 import TaskList from '../components/TaskList';
 import styles from '../styles/Home.module.css';
+import Head from 'next/head';
 
 
 export default function Home() {
   const [tasks, setTasks] = useState([]);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   
   // Charge les tâches depuis le localStorage lors de l'initialisation
   useEffect(() => {
-    const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    if (isMounted) {
+      const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
     setTasks(storedTasks);
-  }, []);
+    }
+    
+  }, [isMounted]);
 
   // Sauvegarde les tâches dans localStorage lors de chaque mise à jour
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-  }, [tasks]);
+    if (isMounted) {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  }, [tasks, isMounted]);
 
   const addTask = (newTask) => {
     setTasks([...tasks, { id: Date.now(), text: newTask, completed: false }]);
@@ -36,6 +47,9 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Ma Todo-List du MasterChief</title>
+      </Head>
       <h1 className={styles.title}>To-Do List</h1>
       <TaskForm onAddTask={addTask} />
       <TaskList tasks={tasks} onDelete={deleteTask} onToggleComplete={toggleComplete} />
