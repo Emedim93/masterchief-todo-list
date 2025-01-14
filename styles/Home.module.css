@@ -2,7 +2,7 @@
 
 .container{
     background-color: #b87272; /* Couleur de fond */
-    background-image: url('../../halo/halo/public/image/major_halo2.png'); /* Chemin de l'image */
+    background-image: url('/major.jpeg');
     background-size: cover; /* Ajuster l'image au conteneur */
     background-position: center; /* Centrer l'image */
     min-height: 100vh; /* Hauteur minimale de la vue */
